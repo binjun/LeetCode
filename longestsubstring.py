@@ -8,6 +8,7 @@ Given "bbbbb", the answer is "b", with the length of 1.
 Given "pwwkew", the answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 """
+import unittest
 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
@@ -22,14 +23,43 @@ class Solution(object):
         maxlen = 0
         dic = {}
         for i in range(len(s)):
-            print pos, s[i], i, maxlen
+            #print pos, s[i], i, maxlen
             if s[i] in dic:
                 pos = max(pos, dic[s[i]]+ 1)
+                maxlen = max(maxlen, i - pos + 1)
+            else:
+                maxlen += 1
+                
             dic[s[i]] = i
-            maxlen = max(maxlen, i - pos + 1)
 
         return maxlen
 
 test =  Solution()
 
-print "longestsubstring length is %d." % test.lengthOfLongestSubstring('abcab')
+class mytest(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def testcase1(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abcab'), 3)
+
+    def testcase2(self):
+        self.assertEqual(test.lengthOfLongestSubstring('a'), 1)
+
+    def testcase3(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abb'), 2)
+
+    def testcase4(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abcdefcef'), 6)
+
+    def testcase5(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abab'), 2)
+
+    def testcase6(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abcb'), 3)
+
+
+unittest.main()
