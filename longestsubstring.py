@@ -22,10 +22,9 @@ class Solution(object):
         maxlen = 0
         dic = {}
         for i in range(len(s)):
-            print pos, s[i], i
+            print pos, s[i], i, maxlen
             if s[i] in dic:
-                maxlen = max(maxlen, dic[s[i]] - pos + 1)
-                pos = dic[s[i]] + 1
+                pos = max(pos, dic[s[i]]+ 1)
             dic[s[i]] = i
             maxlen = max(maxlen, i - pos + 1)
 
@@ -33,4 +32,4 @@ class Solution(object):
 
 test =  Solution()
 
-print "longestsubstring length is %d." % test.lengthOfLongestSubstring('dvdf')
+print "longestsubstring length is %d." % test.lengthOfLongestSubstring('abcab')
