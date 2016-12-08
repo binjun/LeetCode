@@ -29,7 +29,7 @@ class Solution(object):
                 maxlen = max(maxlen, i - pos + 1)
             else:
                 maxlen += 1
-                
+
             dic[s[i]] = i
 
         return maxlen
@@ -59,7 +59,10 @@ class mytest(unittest.TestCase):
         self.assertEqual(test.lengthOfLongestSubstring('abab'), 2)
 
     def testcase6(self):
-        self.assertEqual(test.lengthOfLongestSubstring('abcb'), 3)
+        self.assertEqual(test.lengthOfLongestSubstring("pwwkew"), 3)
+
+    def testcase6(self):
+        self.assertEqual(test.lengthOfLongestSubstring('abba'), 2)
 
 
 unittest.main()
